@@ -257,7 +257,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				EXCLUDED_SOURCE_FILE_NAMES = "/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/main.cpp";
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act11.cpp",
+					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/main.cpp",
+					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act14.cpp",
+					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act13.cpp",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -266,7 +271,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				EXCLUDED_SOURCE_FILE_NAMES = "/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/main.cpp";
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act11.cpp",
+					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/main.cpp",
+					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act14.cpp",
+					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act13.cpp",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

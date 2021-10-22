@@ -1,6 +1,6 @@
 //
 //  MEM.cpp
-//  KnapsackProblem
+//
 //
 //  Created by Diego Solis on 10/12/21.
 //
@@ -83,7 +83,7 @@ int main(){
         }
     }
     cin >> n;
-    for (int i=0; i<=n; i++){
+    for (int i = 0; i <= n; i++) {
         cin >> d[i];
     }
 
@@ -97,6 +97,9 @@ int main(){
 4
 20 2 30 12 8
 
+4
+4 5 7 8 10
+0
 RESP = 1232
 (A)x(((B)x(C))x(D))
 */
