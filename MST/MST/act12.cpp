@@ -11,6 +11,8 @@ using namespace std;
  Complejidad Prim O(V^2)
  */
 
+typedef  pair<float, float> iPair;
+
 struct Point {
     float x, y;
     Point(float x, float y) {
@@ -27,16 +29,16 @@ float Point::getDistance(Point b) {
 }
 
 struct Graph {
-    int V, E; float costMSTPrim;
+    int V, E; float costMSTKruskal;
     vector< pair<float, pair<float, float>> > edges;
     vector<vector<pair<float, float>>> adjList;
-    vector<pair<float, float>> selectedEdgesP; // Arcos seleccionados de prim
+    vector<pair<float, float>> selectedEdgesK; // Arcos seleccionados de prim
   
     Graph(int V, int E) {
         this->V = V;
         this->E = E;
         adjList.resize(V);
-        costMSTPrim = 0;
+        costMSTKruskal = 0;
     }
   
     void addEdge(float u, float v, float w) {
@@ -48,7 +50,51 @@ struct Graph {
     
     void load();
     
-    void primMST();
+    void kruskalMST();
+};
+
+// To represent Disjoint Sets
+struct DisjointSets
+{
+    int *parent, *rnk;
+    int n;
+  
+    DisjointSets(int n){
+        this->n = n;
+        parent = new int[n+1];
+        rnk = new int[n+1];
+        for (int i = 0; i <= n; i++){
+            rnk[i] = 0;
+            parent[i] = i;
+        }
+    }
+  
+    // Find the parent of a node 'u'
+    // Path Compression
+    int find(int u)
+    {
+        /* Make the parent of the nodes in the path
+           from u--> parent[u] point to parent[u] */
+        if (u != parent[u])
+            parent[u] = find(parent[u]);
+        return parent[u];
+    }
+  
+    // Union by rank
+    void merge(int x, int y)
+    {
+        x = find(x), y = find(y);
+  
+        /* Make tree with smaller height
+           a subtree of the other tree  */
+        if (rnk[x] > rnk[y])
+            parent[y] = x;
+        else // If rnk[x] <= rnk[y]
+            parent[x] = y;
+  
+        if (rnk[x] == rnk[y])
+            rnk[y]++;
+    }
 };
 
 void Graph::load(){
@@ -71,37 +117,23 @@ void Graph::load(){
 }
 
 
-void Graph::primMST(){
+void Graph::kruskalMST(){
 // Aquí va tu código
-    float selectedSource = 0;
-    costMSTPrim = 0;
-    unordered_set<float> selected;
-    unordered_set<float> missing;
-    selected.insert(0);
-    for (float i = 1; i < V; i++) {
-        missing.insert(i);
-    }
+    costMSTKruskal = 0;
+    sort(edges.begin(), edges.end());
+    DisjointSets ds(V);
     
-    float connected = V-1;
-    float minCost, selVertex;
-    while (connected > 0) {
-        minCost = INT_MAX;
-        for(float it1 : selected) { // Para cada vertice del set selected
-            for(auto it2=adjList[it1].begin(); it2 != adjList[it1].end(); it2++) {
-                if (missing.find((*it2).first) != missing.end() && (*it2).second < minCost) {
-                    minCost = (*it2).second;
-                    selVertex = (*it2).first;
-                }
-            }
+    for (auto it : edges) {
+        int u = it.second.first;
+        int v = it.second.second;
+        int set_u = ds.find(u);
+        int set_v = ds.find(v);
+        if(set_u != set_v) {
+            ds.merge(u, v);
+            costMSTKruskal += it.first;
+            selectedEdgesK.push_back({u, v});
         }
-        
-        costMSTPrim += minCost;
-        selected.insert(selVertex);
-        missing.erase(selVertex);
-        selectedEdgesP.push_back({selectedSource, selVertex});
-        connected--;
     }
-    
 }
 
 void Graph::print(){
@@ -115,10 +147,6 @@ void Graph::print(){
     }
 }
 
-float roundNum(float num) {
-    float tmp = (int) (num * 100 + .5);
-    return (float) tmp / 100;
-}
 
 int main() {
     int n;
@@ -127,8 +155,9 @@ int main() {
     
     g.load();
     //g.print();
-    g.primMST();
-    cout << roundNum(g.costMSTPrim) <<endl;
+    g.kruskalMST();
+    cout.precision(2);
+    cout  << fixed << g.costMSTKruskal << endl;
     
     return 0;
 }
