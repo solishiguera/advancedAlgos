@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4490C41F271FB72E00C9F8C0 /* act12.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4490C41E271FB72E00C9F8C0 /* act12.cpp */; };
 		4491387927108CF800E84F6A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4491387827108CF800E84F6A /* main.cpp */; };
+		44FF5A9627230A040020453E /* act11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44FF5A9527230A040020453E /* act11.cpp */; };
+		44FF5A9827230A120020453E /* act13.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44FF5A9727230A120020453E /* act13.cpp */; };
+		44FF5A9A27230A1A0020453E /* act14.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44FF5A9927230A1A0020453E /* act14.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +30,9 @@
 		4490C41E271FB72E00C9F8C0 /* act12.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = act12.cpp; sourceTree = "<group>"; };
 		4491387527108CF800E84F6A /* MST */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MST; sourceTree = BUILT_PRODUCTS_DIR; };
 		4491387827108CF800E84F6A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		44FF5A9527230A040020453E /* act11.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = act11.cpp; sourceTree = "<group>"; };
+		44FF5A9727230A120020453E /* act13.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = act13.cpp; sourceTree = "<group>"; };
+		44FF5A9927230A1A0020453E /* act14.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = act14.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				4491387827108CF800E84F6A /* main.cpp */,
+				44FF5A9527230A040020453E /* act11.cpp */,
 				4490C41E271FB72E00C9F8C0 /* act12.cpp */,
+				44FF5A9727230A120020453E /* act13.cpp */,
+				44FF5A9927230A1A0020453E /* act14.cpp */,
 			);
 			path = MST;
 			sourceTree = "<group>";
@@ -123,7 +132,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4491387927108CF800E84F6A /* main.cpp in Sources */,
+				44FF5A9A27230A1A0020453E /* act14.cpp in Sources */,
 				4490C41F271FB72E00C9F8C0 /* act12.cpp in Sources */,
+				44FF5A9827230A120020453E /* act13.cpp in Sources */,
+				44FF5A9627230A040020453E /* act11.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
