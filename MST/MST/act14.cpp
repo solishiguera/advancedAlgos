@@ -13,10 +13,15 @@
 
 using namespace std;
 
+/*
+ Diego Solis Higuera - A008278847
+ Complejidad: O(|V|^2 |E|)
+ */
+
 struct Edge{
     int v;
-    int flow;
-    int C;
+    long long flow;
+    long long C;
     int rev ;
 };
 
@@ -32,17 +37,17 @@ public :
         level = new int[V];
     }
 
-    void addEdge(int u, int v, int C){
-        int tam = adj[v].size();
+    void addEdge(int u, int v, long long C){
+        int tam = (int) adj[v].size();
         Edge a{v, 0, C, tam};
-        tam = adj[u].size();
+        tam = (int) adj[u].size();
         Edge b{u, 0, 0, tam};
         adj[u].push_back(a);
         adj[v].push_back(b); // reverse edge
     }
     bool BFS(int s, int t);
-    int sendFlow(int s, int flow, int t, int ptr[]);
-    int DinicMaxflow(int s, int t);
+    long long sendFlow(int s, long long flow, int t, int ptr[]);
+    long long DinicMaxflow(int s, int t);
 };
 
 bool Graph::BFS(int s, int t){
@@ -69,7 +74,7 @@ bool Graph::BFS(int s, int t){
     return level[t] < 0 ? false : true ;
 }
 
-int Graph::sendFlow(int u, int flow, int t, int start[]){
+long long Graph::sendFlow(int u, long long flow, int t, int start[]){
     // Sink reached
     if (u == t){
         return flow;
@@ -77,8 +82,9 @@ int Graph::sendFlow(int u, int flow, int t, int start[]){
     for (  ; start[u] < adj[u].size(); start[u]++){
         Edge &e = adj[u][start[u]];
         if (level[e.v] == level[u]+1 && e.flow < e.C){
-            int curr_flow = min(flow, e.C - e.flow);
-            int temp_flow = sendFlow(e.v, curr_flow, t, start);
+            long long curr_flow = min(flow, e.C - e.flow);
+            //int curr_flow = flow < (e.C - e.flow) ? flow : (e.C - e.flow);
+            long long temp_flow = sendFlow(e.v, curr_flow, t, start);
             if (temp_flow > 0){
                 e.flow += temp_flow;
                 adj[e.v][e.rev].flow -= temp_flow;
@@ -89,15 +95,15 @@ int Graph::sendFlow(int u, int flow, int t, int start[]){
     return 0;
 }
 
-int Graph::DinicMaxflow(int s, int t){
+long long Graph::DinicMaxflow(int s, int t){
     // Corner case
     if (s == t)
         return -1;
 
-    int total = 0;
+    long long total = 0;
     while (BFS(s, t) == true){
         int *start = new int[V+1] {0};
-        while (int flow = sendFlow(s, INT_MAX, t, start)){
+        while (long long flow = sendFlow(s, INT_MAX, t, start)){
             total += flow;
         }
     }
@@ -105,14 +111,16 @@ int Graph::DinicMaxflow(int s, int t){
 }
 
 int main(){
-    long long n, m, s, t, a, b, c;
-    cin >> n >> m >> s >> t;
+    int n, m, a, b;
+    long long c;
+    cin >> n >> m;
     Graph g(n);
     for (int i=0; i<m; i++){
         cin >> a >> b >> c;
         g.addEdge(a-1, b-1, c);
     }
-    cout << "Maximum flow " << g.DinicMaxflow(s-1, t-1)<<endl;
+    
+    cout << "The maximum speed is " << g.DinicMaxflow(0, n - 1) << "." << endl;
     return 0;
 }
 /*
@@ -129,4 +137,12 @@ int main(){
 4 6 10
 5 7 50
 6 7 10
+
+
+4 5
+1 2 3
+2 4 2
+1 3 4
+3 4 5
+4 1 3
 */
