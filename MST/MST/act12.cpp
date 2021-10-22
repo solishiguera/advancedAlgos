@@ -9,7 +9,7 @@ using namespace std;
 
 /*
  Diego Solis Higuera - A00827847
- Complejidad Prim O(V^2)
+ Complejidad Kruskal O(E log E)
  */
 
 typedef  pair<float, float> iPair;
@@ -82,8 +82,7 @@ struct DisjointSets
     }
   
     // Union by rank
-    void merge(int x, int y)
-    {
+    void merge(int x, int y) {
         x = find(x), y = find(y);
   
         /* Make tree with smaller height
