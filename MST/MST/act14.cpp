@@ -14,7 +14,7 @@
 using namespace std;
 
 /*
- Diego Solis Higuera - A008278847
+ Diego Solis Higuera - A00827847
  Complejidad: O(|V|^2 |E|)
  */
 
