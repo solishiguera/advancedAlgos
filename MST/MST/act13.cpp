@@ -1,6 +1,6 @@
 //
-//  MEM.cpp
-//  KnapsackProblem
+//  act13.cpp
+//  MST
 //
 //  Created by Diego Solis on 10/12/21.
 //
@@ -8,32 +8,15 @@
 #include <stdio.h>
 #include <iostream>
 #include <climits>
-
+#include <vector>
 using namespace std;
 
 #define MAX 51
+/*
+ Diego Solis Higuera - A00827847
+ Complejidad O(N^3)
+*/
 
-void despM(int D[MAX][MAX], int P[MAX][MAX], int n){
-    cout << "------------"<<endl;
-    for (int i=1; i<=n; i++){
-        for (int j=1; j<=n; j++){
-            cout << D[i][j] << " ";
-        }
-        cout << endl;
-    }
-    cout << endl << endl;
-    /*
-     cout << "------------"<<endl;
-     for (int i=1; i<=n; i++){
-     for (int j=1; j<=n; j++){
-     cout << P[i][j] << " ";
-     }
-     cout << endl;
-     } */
-    
-}
-
-// Complejidad O(N^3)
 void calcula(int D[MAX][MAX], int P[MAX][MAX], int d[MAX], int n){
     for(int i = 1; i <= n; i++) {
         D[i][i] = P[i][i] = 0;
@@ -69,21 +52,28 @@ int main(){
             D[i][j] = P[i][j] = 0;
         }
     }
-    
+    vector<int> sol;
     int length;
     cin >> length;
-    cin >> n;
-    d[0] = 0;
-    int i = 1;
-    for (i; i <= n; i++) {
-        cin >> d[i];
-    }
-    d[i] = length;
-    n++;
-    calcula(D, P, d, n);
     
-    cout << endl;
-    cout << D[1][n]<< endl;
+    while(length != 0) {
+        cin >> n;
+        d[0] = 0;
+        int i = 1;
+        for (i; i <= n; i++) {
+            cin >> d[i];
+        }
+        d[i] = length;
+        n++;
+        calcula(D, P, d, n);
+        sol.push_back(D[1][n]);
+        cin >> length;
+    }
+    
+    for(auto it : sol) {
+        cout << "The minimum cutting is " << it << "." << endl;
+    }
+    
 }
 
 /*
@@ -107,11 +97,3 @@ int main(){
  4 5 7 8
  0
  */
-
-// 10 3 2 4 7
-
-// A  8 x 2
-// B  2 x 5
-// C  5 x 4
-// n = 3
-// d  8 2 5 4
