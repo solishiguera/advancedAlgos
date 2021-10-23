@@ -2,7 +2,7 @@
 //  act11.cpp
 //  MST
 //
-//  Created by Diego Solis on 10/22/21.
+//  Created by Diego Solis on 10/20/21.
 //
 
 #include <stdio.h>
@@ -11,6 +11,11 @@
 #include <queue>
 
 #define MAX 21
+
+/*
+ Diego Solis Higuera - A00827847
+ Complejidad: O(2^n)
+ */
 
 using namespace std;
 
@@ -27,9 +32,9 @@ struct Nodo{
 };
 
 void iniciaMat(int matAdj[MAX][MAX]){
-    for(int i=0; i<MAX; i++){
-        matAdj[i][i]=0;
-        for(int j=i+1; j<MAX; j++){
+    for(int i = 0; i < MAX; i++){
+        matAdj[i][i] = 0;
+        for(int j = i + 1; j < MAX; j++){
             matAdj[i][j] = matAdj[j][i] = INT_MAX;
         }
     }
@@ -38,9 +43,9 @@ void iniciaMat(int matAdj[MAX][MAX]){
 void leerArcos(int matAdj[MAX][MAX], int m){
     int c;
     char a, b;
-    for(int i=0; i<m; i++){
+    for (int i = 0; i < m; i++){
         cin >> a >> b >> c;
-        matAdj[a-'A'][b-'A'] = matAdj[b-'A'][a-'A']=c;
+        matAdj[a-'A'+1][b-'A'+1] = matAdj[b-'A'+1][a-'A'+1] = c;
     }
 }
 
@@ -119,14 +124,18 @@ int tsp(int matAdj[MAX][MAX], int n){
 }
 
 int main(){
-    // n = cantidad de nodos
-    // m = cantidad de arcos
     int n, m;
     cin >> n >> m;
-    int matAdj[MAX][MAX]; // asumimos que es base 1 A=1, B=2, C=3...
+    int matAdj[MAX][MAX];
     iniciaMat(matAdj);
     leerArcos(matAdj, m);
-    (tsp(matAdj, n) != INT_MAX) ? cout << tsp(matAdj, n) << endl : cout << "INF" << endl;
+    
+    int sol = tsp(matAdj, n);
+    if (sol == INT_MAX) {
+        cout << "INF" << endl;
+    } else {
+        cout << sol << endl;
+    }
 }
 
 
