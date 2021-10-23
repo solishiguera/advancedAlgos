@@ -261,7 +261,7 @@
 					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act11.cpp",
 					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/main.cpp",
 					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act12.cpp",
-					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act13.cpp",
+					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act14.cpp",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -275,7 +275,7 @@
 					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act11.cpp",
 					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/main.cpp",
 					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act12.cpp",
-					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act13.cpp",
+					"/Users/diegosolis/Documents/TEC/SEMESTRE_5/DS&A/advancedAlgos/MST/MST/act14.cpp",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
